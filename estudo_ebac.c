@@ -155,52 +155,82 @@ int deletar()
 
 int main()
 { 
+	setlocale(LC_ALL, "Portuguese");
+	
 	int opcao=0; //definindo as variáveis
 	int laco=1;
+	char logindigitado[10]="b";
+	char senhadigitada[10]="a"; //"a" = apenas um valor, vai ser mudado depois
+	int comparacao;
+	int comparacao2; //comparar as variáveis
 	
-	for(laco=1;laco=1;) //definindo o laço
+	printf("### Cartório da EBAC ###\n\n");
+	printf("Login de Administrador\n\n");
+	printf("Digite seu login: ");
+	scanf("%s",logindigitado);
+	
+	printf("\nDigite sua senha: ");
+	scanf("%s",senhadigitada);
+	
+	comparacao = strcmp(logindigitado, "admin");
+	comparacao2 = strcmp(senhadigitada, "admin2"); //strcmp = comparação de strings; definindo senha "admin"
+	
+	if(comparacao == 0 && comparacao2 == 0) //"== 0" = se a senha digitada foi igual a comparacao
 	{
-
-		system("cls");
-			
-		setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
 	
-		printf("### Cartório da EBAC ###\n\n"); //início do menu
-		printf("Escolha a opção desejada do menu:\n\n");
-		printf("\t1 - Registrar nomes\n");
-		printf("\t2 - Consultar os nomes\n");
-   		printf("\t3 - Deletar os nomes\n\n"); 
-   		printf("\t4 - Sair do sistema\n\n"); 
-   		printf("Opção: "); //final do menu
-   
-    	scanf("%d", &opcao); //armazenando a escolha do usuário
-    
-    	system("cls"); //responsável por limpar a tela
-    
-    	switch(opcao)
-   		{
-    		case 1:
-    		registro(); //chamada da função "registro"
-			break;
-			   
-			case 2:
-    		consulta();
-			break;
-			   	 
-			case 3:
-    		deletar();
-			break;	 
-			
-			case 4:
-			printf("Obrigado por utilizar o sistema!\n");
-			return 0;
-			break;
-			
-			default:
-    		printf("não existe essa opção\n\n");
-   			system("pause");
-			break;     
+		for(laco=1;laco=1;) //definindo o laço
+		{
+	
+			system("cls");
+				
+			setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
+		
+			printf("### Cartório da EBAC ###\n\n"); //início do menu
+			printf("Escolha a opção desejada do menu:\n\n");
+			printf("\t1 - Registrar nomes\n");
+			printf("\t2 - Consultar os nomes\n");
+	   		printf("\t3 - Deletar os nomes\n\n"); 
+	   		printf("\t4 - Sair do sistema\n\n"); 
+	   		printf("Opção: "); //final do menu
+	   
+	    	scanf("%d", &opcao); //armazenando a escolha do usuário
+	    
+	    	system("cls"); //responsável por limpar a tela
+	    
+	    	switch(opcao)
+	   		{
+	    		case 1:
+	    		registro(); //chamada da função "registro"
+				break;
+				   
+				case 2:
+	    		consulta();
+				break;
+				   	 
+				case 3:
+	    		deletar();
+				break;	 
+				
+				case 4:
+				printf("Obrigado por utilizar o sistema!\n");
+				return 0;
+				break;
+				
+				default:
+	    		printf("não existe essa opção\n\n");
+	   			system("pause");
+				break;     
+			}
 		}
-    
 	}
+	else
+		{
+			system("cls");
+			printf("Login e/ou Senha incorreta(s)\n\n");
+			system("pause");
+			system("cls");
+			main();
+		}
+	
 }
+
